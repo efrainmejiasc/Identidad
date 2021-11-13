@@ -26,10 +26,12 @@ namespace IdentidadSite.Controllers
                 this.usuario = JsonConvert.DeserializeObject<EMCApi.Client.UsuarioDTO>(httpContext.HttpContext.Session.GetString("UserLogin"));
 
         }
+
         public IActionResult Index(RespuestaModel respuesta = null)
         {
             if (respuesta == null) return View(); else return View(respuesta);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> CargarArchivo(List<IFormFile> files)
