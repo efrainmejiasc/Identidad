@@ -32,15 +32,15 @@ function CrearUsuario()
     console.log(password + ' ' + cpassword);
 
     if ( nombre === '' || apellido === '' || idRol === '' || username === '' || email === '' || password === '' || cpassword === '') {
-        toastr.warning("All fields are required");
+        toastr.warning("Todos los campos son requeridos.");
         return false;
     }
     else if (!EmailValido(email)) {
-        toastr.warning("The email not is valid.");
+        toastr.warning("El email no es valido.");
         return false;
     }
     else if (password != cpassword ) {
-        toastr.warning("Passwords must be the same.");
+        toastr.warning("Las contraseñas deben ser identicas");
         return false;
     }
 
@@ -52,12 +52,12 @@ function CrearUsuario()
         success: function (data) {
             if (data.estatus)
             {
-                toastr.success("Success creating the user.");
+                toastr.success("Transaccion exitosa.");
                 setTimeout(LimpiarForm, 4000);
             }
             else
             {
-                toastr.warning("User could not be created.");
+                toastr.warning("Transaccion fallida.");
             }
         }
     });

@@ -14,6 +14,9 @@ namespace DatosEMC.DTOs
         public string Rfc { get; set; }
         public string Email { get; set; }
         public DateTime Fecha { get; set; }
+        public DateTime FechaModificacion { get; set; }
         public bool Activo { get; set; }
+        public string Direccion{ get; set; }
+        public string Telefono { get; set; }
     }
 }

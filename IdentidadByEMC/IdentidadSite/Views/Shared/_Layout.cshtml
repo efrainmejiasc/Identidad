@@ -23,13 +23,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" id="submenu" style="color: #0268b8;">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a href="@Url.Action("Index","Home")" class="nav-link text-info" id="logout_">Logout</a>
+                            <a href="@Url.Action("Index","Home")" class="nav-link text-info" id="logout_">Salir</a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("Index","Usuario")" class="nav-link text-info" id="usuario_">Users</a>
+                            <a href="@Url.Action("Index","Usuario")" class="nav-link text-info" id="usuario_">Usuarios</a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("About","Home")" class="nav-link text-info" id="dashboard_">Dashboard</a>
+                            <a href="@Url.Action("About","Home")" class="nav-link text-info" id="dashboard_">Tablero</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","UploadFile")" class="nav-link text-info" id="uploadFile_">Archivos</a>
                         </li>
                 
                     </ul>
@@ -45,7 +48,9 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            <a>  &copy;  @DateTime.Now.Year Developer by EMC</a>
+            <a>  &copy;  @DateTime.Now.Year Desarrollado por EMC</a>
+             <a> &nbsp;&nbsp;&nbsp;</a>
+            <a href='@Url.Action("Index", "Empresa")' style="display:none;" >  Empresa </a>
         </div>
     </footer>
 

@@ -1,74 +1,70 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(function(){
     console.log("ready!");
-    $('#usuario_').hide();
-    GetUsuarios();
+    GetEmpresas();
 });
 
-function GetUsuarios() {
+function GetEmpresas() {
     $.ajax({
-        type: "GET",
-        url: urlGetUsuarios,
+        type: "POST",
+        url: urlGetEmpresas,
         datatype: "json",
         success: function (data) {
             if (data != null) {
-                $('#tablaUsuarios tbody tr').remove();
+                $('#tablaEmpresas tbody tr').remove();
                 $.each(data, function (index, item) {
                     let tr = '';
                     var est = item.activo ? 'Activo' : 'Inactivo';
-                    var rol = item.idRol == 3 ? 'Seller' : item.idRol == 2 ? 'Client' : 'Manager';
+                    console.log(item.activo)
                     if (!item.activo)
                         tr = `<tr>
                       <td style=color:red;> ${est} </td>
-                      <td> ${item.nombre} </td>
-                      <td> ${item.apellido} </td>
-                      <td> ${item.username} </td>
+                      <td> ${item.identificador.substring(0,8)} </td>
+                      <td> ${item.nombreEmpresa} </td>
+                      <td> ${item.rfc} </td>
                       <td> ${item.email} </td>
-                      <td> ${rol} </td>
-                      <td><input type="button" class="btn btn-sm btn-success" onclick="EditEstatus(${item.id} , ${item.idEmpresa} , ${true})" value="Activar" style="width:100px;"></td>
-                      <td><input type="button" class="btn btn-sm btn-danger" onclick="DeleteUser(${item.id} , ${item.idEmpresa})" value="Eliminar" style="width:100px;"></td>
+                      <td> ${item.telefono} </td>
+                      <td> ${item.direccion} </td>
+                      <td><input type="button" class="btn btn-sm btn-success" onclick="EditEstatus(${item.id},${true})" value="Activar" style="width:100px;"></td>
+                      <td><input type="button" class="btn btn-sm btn-danger" onclick="DeleteEmpresa(${item.id})" value="Eliminar" style="width:100px;"></td>
                       </tr>`;
                     else
                         tr = `<tr>
-                      <td style=color:green;> ${est} </td>
-                      <td> ${item.nombre} </td>
-                      <td> ${item.apellido} </td>
-                      <td> ${item.username} </td>
+                     <td style=color:green;> ${est} </td>
+                      <td> ${item.identificador.substring(0, 8)} </td>
+                      <td> ${item.nombreEmpresa} </td>
+                      <td> ${item.rfc} </td>
                       <td> ${item.email} </td>
-                      <td> ${rol} </td>
-                      <td><input type="button" class="btn btn-sm btn-warning" onclick="EditEstatus(${item.id}, ${item.idEmpresa} ,${false})" value="Desactivar" style="width:100px;" ></td>
-                      <td><input type="button" class="btn btn-sm btn-danger" onclick="DeleteUser(${item.id} , ${item.idEmpresa})" value="Eliminar" style="width:100px;"></td>
+                      <td> ${item.telefono} </td>
+                      <td> ${item.direccion} </td>
+                      <td><input type="button" class="btn btn-sm btn-warning" onclick="EditEstatus(${item.id},${false})" value="Desactivar" style="width:100px;" ></td>
+                      <td><input type="button" class="btn btn-sm btn-danger" onclick="DeleteEmpresa(${item.id})" value="Eliminar" style="width:100px;"></td>
                       </tr>`;
 
-                    $('#tablaUsuarios tbody').append(tr);
+                    $('#tablaEmpresas tbody').append(tr);
                 });
                 setTimeout(InicializarDataTable, 1000);
             }
             else {
-                $('#tablaUsuarios tbody tr').remove();
+                $('#tablaEmpresas tbody tr').remove();
             }
         }, error: function (jqXHR, textStatus, errorThrown) {
-            $('#tablaUsuarios tbody tr').remove();
+            $('#tablaEmpresas tbody tr').remove();
         }
     });
 
-    $("#tablaUsuarios").addClass("display compact dt-center");
+    $("#tablaEmpresas").addClass("display compact dt-center");
     return false;
 }
 
-function GotoUsers() {
-    window.location.href = urlUsuarios;
-}
-
-
-function EditEstatus(id, idEmpresa , estatus) {
+function EditEstatus(id,estatus) {
     $.ajax({
         type: "POST",
         url: urlEditEstatus,
-        data: { Id: id, IdEmpresa: idEmpresa, Activo: estatus },
+        data: { id: id, estatus: estatus },
         datatype: "json",
         success: function (data) {
             if (data.estatus) {
-                GetUsuarios();
+                GetEmpresas();
                 toastr.success("Actualizacion de estatus exitosa.");
             }
             else {
@@ -78,15 +74,15 @@ function EditEstatus(id, idEmpresa , estatus) {
     });
 }
 
-function DeleteUser(id, idEmpresa) {
+function DeleteEmpresa(id) {
     $.ajax({
         type: "POST",
-        url: urlDeleteUser,
-        data: { Id: id, IdEmpresa: idEmpresa },
+        url: urlDeleteEmpresa,
+        data: {id: id},
         datatype: "json",
         success: function (data) {
             if (data.estatus) {
-                GetUsuarios();
+                GetEmpresas();
                 toastr.success("Usuario eliminado");
             }
             else {
@@ -96,13 +92,12 @@ function DeleteUser(id, idEmpresa) {
     });
 }
 
-
 function InicializarDataTable() {
     var init = $('#initDataTable').val();
 
     try {
         if (init === 'no') {
-            $('#tablaUsuarios').DataTable({
+            $('#tablaEmpresas').DataTable({
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
                 },
@@ -113,7 +108,7 @@ function InicializarDataTable() {
             });
             $('#initDataTable').val('si');
         } else {
-            $('#tablaUsuarios').DataTable().fnDestroy({
+            $('#tablaEmpresas').DataTable().fnDestroy({
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
                 },
@@ -125,5 +120,5 @@ function InicializarDataTable() {
         }
     } catch { console.log(''); }
 
-    $("#tablaUsuarios").addClass("display compact dt-center");
+    $("#tablaEmpresas").addClass("display compact dt-center");
 }

@@ -3,6 +3,9 @@
     GetEmpresas();
     $('#logout_').hide();
     $('#usuario_').hide();
+    $('#dashboard_').hide();
+    $('#uploadFile_').hide();
+
 });
 
 function Login() {
@@ -13,7 +16,7 @@ function Login() {
     var confirmar = document.getElementById('confirmar').checked;
 
     if (empresa === null || userMail === '' || password === '' || !confirmar) {
-        toastr.warning("All fields are required");
+        toastr.warning("Todos los campos son requeridos");
         return false;
     }
 
@@ -24,13 +27,10 @@ function Login() {
         datatype: "json",
         success: function (data) {
             if (data.estatus) {
-                if (data.estatusFacturacion)
                     window.location.href = urlRedirect;
-                else
-                    window.location.href = urlRedirectIF;
             }
             else
-                toastr.warning("Unauthorized user / incorrect data");
+                toastr.warning("Usuario NO autorizado o datos incorrectos");
         }
     });
     return false;
@@ -41,10 +41,11 @@ function GetEmpresas() {
     $.ajax({
         type: "POST",
         url: urlGetEmpresas,
+        data: {activo: true},
         datatype: "json",
         success: function (data) {
             $('#empresa').empty();
-            $('#empresa').append('<option value="-1" disabled selected>Select company...</option>');
+            $('#empresa').append('<option value="-1" disabled selected>Seleccione Empresa...</option>');
             $.each(data, function (index, item) {
                 $('#empresa').append("<option value=\"" + item.id + "\">" + item.nombreEmpresa + "</option>");
             });

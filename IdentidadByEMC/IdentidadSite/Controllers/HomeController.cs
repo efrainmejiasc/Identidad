@@ -71,7 +71,7 @@ namespace IdentidadSite.Controllers
                     user.Email = claims.GetEmail();
                     user.Token = accessToken.Token;
 
-                    httpContext.HttpContext.Session.SetString("UserLogin", JsonConvert.SerializeObject(user));
+                    this.httpContext.HttpContext.Session.SetString("UserLogin", JsonConvert.SerializeObject(user));
                     respuesta.Estatus = true;
                 }
                 else
@@ -79,7 +79,7 @@ namespace IdentidadSite.Controllers
                     respuesta.Estatus = false;
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 respuesta.Estatus = false;
             }

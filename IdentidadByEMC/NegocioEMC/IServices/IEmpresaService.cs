@@ -1,4 +1,5 @@
-﻿using DatosEMC.DTOs;
+﻿using DatosEMC.DataModels;
+using DatosEMC.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace NegocioEMC.IServices
 {
     public interface IEmpresaService
     {
-        Task<List<EmpresaDTO>> GetEmpresaDataAsync();
+        Task<List<EmpresaDTO>> GetEmpresaDataAsync(bool activo = false);
+        Task<bool> DeleteEmpresaAsync(int idEmpresa);
+        Task<EmpresaDTO> AddEmpresaAsync(EmpresaDTO model);
+        Empresa UpdateEstatusEmpresa(int idEmpresa, bool activo);
     }
 }

@@ -52,7 +52,6 @@ namespace IdentidadSite
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,23 +63,28 @@ namespace IdentidadSite
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
             }
+
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            //app.UseAuthorization();
+            // app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
+                // endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                name: "default",
+                pattern: "{controller}/{action}/{id?}",
+                defaults: new { controller = "Home", action = "Index" });
             });
 
             //******************************************************************************
-            var defaultDateCulture = "es-VE";
+            var defaultDateCulture = "en-US";
             var ci = new CultureInfo(defaultDateCulture);
             ci.NumberFormat.NumberDecimalSeparator = ".";
             ci.NumberFormat.CurrencyDecimalSeparator = ".";
@@ -97,7 +101,6 @@ namespace IdentidadSite
                 }
             });
             //******************************************************************************
-
         }
     }
 }

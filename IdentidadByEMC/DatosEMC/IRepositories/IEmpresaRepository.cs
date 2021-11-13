@@ -10,5 +10,9 @@ namespace DatosEMC.IRepositories
     public interface  IEmpresaRepository
     {
         Task<List<Empresa>> GetEmpresasAsync();
+        Task<Empresa> AddEmpresaAsync(Empresa model);
+        Task<bool> DeleteEmpresaAsync(int idEmpresa);
+        Task<List<Empresa>> GetEmpresasAsync(bool activo);
+        Empresa UpdateEstatusEmpresa(int idEmpresa, bool activo);
     }
 }
