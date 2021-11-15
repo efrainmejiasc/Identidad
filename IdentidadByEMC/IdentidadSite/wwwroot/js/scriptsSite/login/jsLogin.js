@@ -11,6 +11,7 @@
 function Login() {
 
     var empresa = $('#empresa').val();
+    var nombreEmpresa = $("#empresa option:selected").text();
     var userMail = $('#userMail').val();
     var password = $('#password').val();
     var confirmar = document.getElementById('confirmar').checked;
@@ -23,7 +24,7 @@ function Login() {
     $.ajax({
         type: "GET",
         url: urlLogin,
-        data: { idEmpresa: empresa, userMail: userMail, password: password},
+        data: { idEmpresa: empresa, userMail: userMail, password: password, nombreEmpresa: nombreEmpresa },
         datatype: "json",
         success: function (data) {
             if (data.estatus) {

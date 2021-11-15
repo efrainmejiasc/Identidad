@@ -15,11 +15,14 @@ namespace DatosEMC.DataModels
         {
         }
 
+        public virtual DbSet<Materias> Materias { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
 
         public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Archivo> Archivo { get; set; }
+        public virtual DbSet<Persona> Persona { get; set; }
+
 
 
 

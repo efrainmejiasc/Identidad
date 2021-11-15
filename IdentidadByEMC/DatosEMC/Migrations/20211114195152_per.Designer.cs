@@ -4,14 +4,16 @@ using DatosEMC.DataModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatosEMC.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    partial class MyAppContextModelSnapshot : ModelSnapshot
+    [Migration("20211114195152_per")]
+    partial class per
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,9 +145,6 @@ namespace DatosEMC.Migrations
                     b.Property<int>("IdEmpresa")
                         .HasColumnType("INT");
 
-                    b.Property<int>("IdTurno")
-                        .HasColumnType("INT");
-
                     b.Property<string>("Identificador")
                         .HasColumnType("VARCHAR(200)");
 
@@ -164,8 +163,8 @@ namespace DatosEMC.Migrations
                     b.Property<string>("Rh")
                         .HasColumnType("VARCHAR(20)");
 
-                    b.Property<string>("Turno")
-                        .HasColumnType("VARCHAR(50)");
+                    b.Property<int>("Turno")
+                        .HasColumnType("INT");
 
                     b.HasKey("Dni");
 

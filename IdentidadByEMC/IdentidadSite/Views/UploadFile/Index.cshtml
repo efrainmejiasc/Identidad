@@ -5,9 +5,8 @@
     <script src="~/js/scriptsSite/uploadFile/jsIndex.js"></script>
     <link rel="stylesheet" type="text/css" href="~/js/dataTables/datatables.css" />
     <script type="text/javascript" src="~/js/dataTables/datatables.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <link rel="stylesheet" href="~/js/toastr/toastr.css" />
+    <script src="~/js/toastr/toastr.min.js"></script>
 }
 
 <div class="card" style="margin-top:5%;">
@@ -16,10 +15,10 @@
             <h2>Cargar Archivos</h2>
         </div>
         <hr />
-              <form asp-controller="UploadFile" asp-action="CargarArchivo" method="POST"  enctype="multipart/form-data" multiple>  
+              <form asp-controller="UploadFile" asp-action="Index" method="POST"  enctype="multipart/form-data" >  
                 <div class="form-group row">                     
                       <div class="col-md-8">
-                               <input type="file" id="files" name="files" class="btn btn-primary" />  
+                               <input type="file" id="files" name="files" class="btn btn-primary" multiple/>  
                       </div>
                       <div class="col-md-4 text-md-right">
                             <button type="submit" class="btn btn-success" > <i class="bi bi-upload">  Subir Archivos</i></button>
@@ -29,4 +28,14 @@
     </div>
 </div>
 
+<script>
+    var descripcion = '@ViewBag.Descripcion';
+    var estatus = '@ViewBag.Estatus'
 
+    if (estatus != '') {
+        if (estatus && descripcion != '')
+            toastr.success(descripcion)
+        else if (!estatus && descripcion != '')
+            toastr.warning(descripcion)
+    }
+</script>

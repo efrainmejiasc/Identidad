@@ -4,14 +4,16 @@ using DatosEMC.DataModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatosEMC.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    partial class MyAppContextModelSnapshot : ModelSnapshot
+    [Migration("20211114175426_upload")]
+    partial class upload
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,90 +88,6 @@ namespace DatosEMC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Empresa");
-                });
-
-            modelBuilder.Entity("DatosEMC.DataModels.Materias", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INT")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IdEmpresa")
-                        .HasColumnType("INT");
-
-                    b.Property<string>("NombreMateria")
-                        .HasColumnType("VARCHAR(80)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Materias");
-                });
-
-            modelBuilder.Entity("DatosEMC.DataModels.Persona", b =>
-                {
-                    b.Property<string>("Dni")
-                        .HasColumnType("VARCHAR(50)");
-
-                    b.Property<bool>("Activo")
-                        .HasColumnType("BIT");
-
-                    b.Property<string>("Apellido")
-                        .HasColumnType("VARCHAR(100)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("VARCHAR(50)");
-
-                    b.Property<string>("Empresa")
-                        .HasColumnType("VARCHAR(200)");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("DATETIME");
-
-                    b.Property<string>("Foto")
-                        .HasColumnType("VARCHAR(200)");
-
-                    b.Property<string>("Grado")
-                        .HasColumnType("VARCHAR(20)");
-
-                    b.Property<string>("Grupo")
-                        .HasColumnType("VARCHAR(20)");
-
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INT")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IdEmpresa")
-                        .HasColumnType("INT");
-
-                    b.Property<int>("IdTurno")
-                        .HasColumnType("INT");
-
-                    b.Property<string>("Identificador")
-                        .HasColumnType("VARCHAR(200)");
-
-                    b.Property<string>("Matricula")
-                        .HasColumnType("VARCHAR(50)");
-
-                    b.Property<string>("Nombre")
-                        .HasColumnType("VARCHAR(100)");
-
-                    b.Property<string>("PathQr")
-                        .HasColumnType("VARCHAR(8000)");
-
-                    b.Property<string>("Qr")
-                        .HasColumnType("VARCHAR(8000)");
-
-                    b.Property<string>("Rh")
-                        .HasColumnType("VARCHAR(20)");
-
-                    b.Property<string>("Turno")
-                        .HasColumnType("VARCHAR(50)");
-
-                    b.HasKey("Dni");
-
-                    b.ToTable("Persona");
                 });
 
             modelBuilder.Entity("DatosEMC.DataModels.Roles", b =>

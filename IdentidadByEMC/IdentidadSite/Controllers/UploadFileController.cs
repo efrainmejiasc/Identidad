@@ -27,52 +27,123 @@ namespace IdentidadSite.Controllers
 
         }
 
-        public IActionResult Index(RespuestaModel respuesta = null)
+        public IActionResult Index()
         {
-            if (respuesta == null) return View(); else return View(respuesta);
+            return View();
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> CargarArchivo(List<IFormFile> files)
+        public async Task<IActionResult> Index(List<IFormFile> files)
         {
-            if (files.Count <= 0)
-                return Content("Debe seleccionar archivos");
+            ViewBag.Estatus = false;
 
-            var respuesta = new RespuestaModel();
-            respuesta.Estatus = false;
+            if (files.Count <= 0)
+            {
+                ViewBag.Descripcion = "Debe seleccionar archivos";
+                return View();
+            }
+        
 
             try 
             {
-                var pathBase = CrearDirectorios(this.usuario.Email, this.usuario.IdEmpresa);
+                var lstPath = CrearDirectorios(this.usuario.Email, this.usuario.IdEmpresa);
 
                 foreach (var file in files)
                 {
-                    using (var stream = new FileStream(pathBase + file.FileName, FileMode.Create))
+                    if (file.FileName.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase) || file.FileName.EndsWith(".xls", StringComparison.OrdinalIgnoreCase))
                     {
-                        await file.CopyToAsync(stream);
+                        using (var stream = new FileStream(lstPath[0] + file.FileName, FileMode.Create)) { await file.CopyToAsync(stream); }
+
+                        var lstPersonasDTO = EngineTool.ReadFileXls(lstPath[0] + file.FileName, lstPath[0], this.usuario.IdEmpresa, this.usuario.NombreEmpresa) ;
+
+                        var personasDTO = ConvertirListaDTO(lstPersonasDTO);
+                        var savePersonas = await this.clientApi.PostPersonasAsync(personasDTO);
+                        if (savePersonas.Ok)
+                        {
+                            ViewBag.Estatus = true;
+                            ViewBag.Descripcion = "Archivos cargados correctamente.";
+                            return View();
+                        }
+                        else
+                        {
+                            ViewBag.Descripcion = "Fallo la carga de archivos.";
+                            return View();
+                        }
+                    }
+                    else if (file.FileName.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) || file.FileName.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) || file.FileName.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
+                    {
+                        using (var stream = new FileStream(lstPath[2] + file.FileName, FileMode.Create)) { await file.CopyToAsync(stream); }
                     }
                 }
 
-                respuesta.Estatus = true;
+                ViewBag.Estatus = true;
+                ViewBag.Descripcion = "Archivos cargados correctamente";
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                ViewBag.Descripcion = "Error cargando archivos";
             }
 
-            return RedirectToAction("Index",respuesta);
+            return View();
         }
 
-        private string CrearDirectorios(string email, int id)
+        private List<string> CrearDirectorios(string email, int id)
         {
+            var lst = new List<string>();
             var pathBase = @"wwwroot/ArchivosClientes";
             EngineTool.CreateDirectory(pathBase);
             var nombreCarpeta = email + "_"  + id.ToString();
             var ruta = pathBase + "/" + nombreCarpeta;
             EngineTool.CreateDirectory(ruta);
+            lst.Add(ruta + "/");                                           //"wwwroot/ArchivosClientes/correo@absd.com/"
 
-            return ruta + "/";
+            ruta = pathBase + "/" + nombreCarpeta + "/" + "imagenesQR";
+            EngineTool.CreateDirectory(ruta);
+            lst.Add(ruta + "/");                                         //"wwwroot/ArchivosClientes/correo@absd.com/imagenesQR/"
+
+            ruta = pathBase + "/" + nombreCarpeta + "/" + "imagenes";
+            EngineTool.CreateDirectory(ruta);
+            lst.Add(ruta + "/");                                         //"wwwroot/ArchivosClientes/correo@absd.com/imagenes/"
+
+            return lst;
         }
+
+
+        private List<EMCApi.Client.PersonaDTO> ConvertirListaDTO (ICollection<DatosEMC.DTOs.PersonaDTO> lstPersonasDTO)
+        {
+            List<EMCApi.Client.PersonaDTO> personas = new List<EMCApi.Client.PersonaDTO>();
+            foreach (var p in lstPersonasDTO)
+            {
+                var x = new EMCApi.Client.PersonaDTO()
+                {
+                    Foto = p.Foto,
+                    Nombre = p.Nombre,
+                    Apellido = p.Apellido,
+                    Dni = p.Dni,
+                    Matricula = p.Matricula,
+                    Rh = p.Rh,
+                    Grado = p.Grado,
+                    Grupo = p.Grupo,
+                    Email = p.Email,
+                    Empresa = p.Empresa,
+                    Turno = p.Turno,
+                    IdTurno = p.IdTurno,
+                    Identificador = p.Identificador,
+                    IdEmpresa = p.IdEmpresa,
+                    Fecha = p.Fecha,
+                    Activo = p.Activo,
+                    PathQr = p.PathQr,
+                    Qr = p.Qr,
+                };
+
+                personas.Add(x);
+            }
+
+            return personas;
+        }
+
+
     }
 }

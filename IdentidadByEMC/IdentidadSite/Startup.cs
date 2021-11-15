@@ -1,4 +1,5 @@
 using AutoMapper;
+using DatosEMC.Clases;
 using EMCApi.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,6 +19,7 @@ namespace IdentidadSite
 {
     public class Startup
     {
+       
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -101,6 +103,7 @@ namespace IdentidadSite
                 }
             });
             //******************************************************************************
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
     }
 }
