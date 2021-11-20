@@ -1,5 +1,6 @@
 ﻿using EMCApi.Client;
 using IdentidadSite.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -34,7 +35,7 @@ namespace IdentidadSite.Controllers
             return View();
         }
 
-
+        [AllowAnonymous]
         [HttpPost]
         public async Task<JsonResult> GetEmpresasAsync(bool activo = false)
         {
