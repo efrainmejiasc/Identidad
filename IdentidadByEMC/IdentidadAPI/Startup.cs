@@ -99,6 +99,12 @@ namespace IdentidadAPI
 
             services.AddScoped<IPersonaService, PersonaService>();
             services.AddScoped<IPersonaRepository, PersonaRepository>();
+
+            services.AddScoped<IGradoService, GradoService>();
+            services.AddScoped<IGradoRepository, GradoRepository>();
+
+            services.AddScoped<IGrupoService, GrupoService>();
+            services.AddScoped<IGrupoRepository, GrupoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -18,15 +18,9 @@ namespace DatosEMC.Repositories
 
         public List<Persona> AddPersona(List<Persona> model)
         {
-            try
-            {
-                this.db.Persona.AddRange(model);
-                this.db.SaveChanges();
-            }
-            catch(Exception ex) {
-                var error = ex.Message;
-            }
-     
+            this.db.Persona.AddRange(model);
+            this.db.SaveChanges();
+
             return model;
         }
 

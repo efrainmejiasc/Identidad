@@ -55,7 +55,10 @@ namespace IdentidadSite
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-          
+           /* services.AddMvc(options => {
+                options.Filters.Add(new ValidateSession());
+                options.Filters.Add(typeof(ValidateSession));
+            });*/
 
         }
 

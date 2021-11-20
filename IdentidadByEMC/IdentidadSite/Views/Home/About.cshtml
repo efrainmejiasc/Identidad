@@ -18,14 +18,15 @@ function GetUsuarioLogger()
 {
     $.ajax({
         type: "GET",
-        url: urlUsuarioLogger ,
+        url: urlGetUsuarioLogger ,
         datatype: "json",
         success: function (data)
         {
-          var s = data.idRol== 5 ? $('#empresas_').show() : $('#empresas_').hide();
+          var s = data.idRol === 5 ? $('#empresas_').show() : $('#empresas_').hide();
         }
     });
- return false;
+
+    return false;
 }
   
 </script>

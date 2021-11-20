@@ -1,7 +1,7 @@
 ﻿using EMCApi.Client;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NegocioEMC.IServices;
+
 
 namespace IdentidadSite.Controllers
 {
@@ -9,18 +9,17 @@ namespace IdentidadSite.Controllers
     {
         private readonly ClientEMCApi clientApi;
         private readonly IHttpContextAccessor httpContext;
-        private readonly IPersonaService personaService;
 
-        public MetaController(ClientEMCApi _clienteApi, IHttpContextAccessor _httpContext, IPersonaService _personaService)
+        public MetaController(ClientEMCApi _clienteApi, IHttpContextAccessor _httpContext)
         {
             this.clientApi = _clienteApi;
             this.httpContext = _httpContext;
-            this.personaService = _personaService;
         }
 
         public IActionResult Index()
         {
             return View();
         }
+
     }
 }

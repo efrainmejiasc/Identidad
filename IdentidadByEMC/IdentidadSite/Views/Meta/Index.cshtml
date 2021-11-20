@@ -10,8 +10,8 @@
 
 
 <script>
-    var urlAddUsuario = '@Url.Action("AddUsuario","Usuario")';
-    var urlAllUsers = '@Url.Action("About","Usuario")';
+    var urlGetGrados = '@Url.Action("GetGrados","Grados")';
+    var urlGetGrupos= '@Url.Action("GetGrupos","Grupos")';
 </script>
 
 <div class="card" style="margin-top:5%;">
@@ -19,16 +19,20 @@
          <div class="form-horizontal" style="color:dimgray">
 
               <div class="form-group row">
-                  <div class="col-md-4 text-md-center">
+                  <div class="col-md-3 text-md-left">
+                      <span>Grado</span>
                     <select id="grado" class="form-control" onchange=""> </select>
                 </div>
-                  <div class="col-md-4 text-md-center">
+                  <div class="col-md-3 text-md-left">
+                        <span>Grupo</span>
                     <select id="grupo" class="form-control" onchange=""></select>
                 </div>
-                  <div class="col-md-4 text-md-center">
+                  <div class="col-md-3 text-md-left">
+                        <span>Turno</span>
                     <select id="turno" class="form-control" onchange=""></select>
                 </div>
-                <div class="col-md-4 text-md-center">
+                <div class="col-md-3 text-md-center">
+                    <br />
                     <input type="button" id="buscar" value="Buscar" class="btn btn-primary" style="" onclick="" />
                 </div>
               </div>

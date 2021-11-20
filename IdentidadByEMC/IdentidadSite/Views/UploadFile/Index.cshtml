@@ -15,10 +15,14 @@
             <h2>Cargar Archivos</h2>
         </div>
         <hr />
-        <div class="spinner-border" role="status" id="divLoading">
-                <h3>Esto puede tardar algo de tiempo...</h3>
+        <div class=container id="containerLoading" style="color:green;"> 
+              <h3>Esto puede tardar algo de tiempo...</h3>
+             <div class="spinner-border" role="status" id="divLoading">
                 <span class="sr-only" id="itemLoading">Loading...</span>
-         </div>
+             </div>
+            <hr />
+        </div>
+
               <form asp-controller="UploadFile" asp-action="Index" method="POST"  enctype="multipart/form-data" >  
                 <div class="form-group row">                     
                       <div class="col-md-8">
