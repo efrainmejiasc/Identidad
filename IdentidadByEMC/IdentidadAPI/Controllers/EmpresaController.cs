@@ -16,9 +16,11 @@ namespace IdentidadApi.Controllers
     public class EmpresaController : ControllerBase
     {
         private readonly IEmpresaService EmpresaService;
-        public EmpresaController(IEmpresaService _EmpresaService)
+        private readonly IUsuarioService usuarioService;
+        public EmpresaController(IEmpresaService _EmpresaService , IUsuarioService _usuarioService)
         {
-            EmpresaService = _EmpresaService;
+            this.EmpresaService = _EmpresaService;
+            this.usuarioService = _usuarioService;
         }
 
         /// <summary>
@@ -31,9 +33,25 @@ namespace IdentidadApi.Controllers
 
         public async Task<IActionResult> AddEmpresa(EmpresaDTO empresaDTO)
         {
-             empresaDTO = await this.EmpresaService.AddEmpresaAsync(empresaDTO);
+            empresaDTO = await this.EmpresaService.AddEmpresaAsync(empresaDTO);
 
-            if (empresaDTO != null)
+            var usuarioDTO = new UsuarioDTO()
+            {
+               IdEmpresa = empresaDTO.Id,
+               Email = empresaDTO.Email,
+               Nombre = empresaDTO.NombreEmpresa,
+               Apellido = empresaDTO.NombreEmpresa,
+               Username = empresaDTO.Email,
+               Fecha = DateTime.Now,
+               Activo = true,
+               Password = EngineTool.EnCodeBase64(empresaDTO.Email + empresaDTO.Rfc),
+               Password2 = EngineTool.EnCodeBase64(empresaDTO.Email + empresaDTO.Rfc),
+               IdRol = 1
+            };
+
+            var result = this.usuarioService.AddUsuario(usuarioDTO);
+
+            if (empresaDTO != null && result.Ok)
                 return Ok(EngineService.SetGenericResponse(true, "Empresa agregada correctamente"));
             else
                 return BadRequest(EngineService.SetGenericResponse(false, "No se encontró información"));

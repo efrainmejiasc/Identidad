@@ -5,7 +5,8 @@
     $('#usuario_').hide();
     $('#dashboard_').hide();
     $('#uploadFile_').hide();
-
+    $('#empresas_').hide();
+    $('#personas_').hide();
 });
 
 function Login() {

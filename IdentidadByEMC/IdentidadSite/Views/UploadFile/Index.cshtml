@@ -15,13 +15,17 @@
             <h2>Cargar Archivos</h2>
         </div>
         <hr />
+        <div class="spinner-border" role="status" id="divLoading">
+                <h3>Esto puede tardar algo de tiempo...</h3>
+                <span class="sr-only" id="itemLoading">Loading...</span>
+         </div>
               <form asp-controller="UploadFile" asp-action="Index" method="POST"  enctype="multipart/form-data" >  
                 <div class="form-group row">                     
                       <div class="col-md-8">
                                <input type="file" id="files" name="files" class="btn btn-primary" multiple/>  
                       </div>
                       <div class="col-md-4 text-md-right">
-                            <button type="submit" class="btn btn-success" > <i class="bi bi-upload">  Subir Archivos</i></button>
+                            <button type="submit" class="btn btn-success" > <i class="bi bi-upload" onclick="ShowSpinner();">  Subir Archivos</i></button>
                      </div>
                 </div>
              </form> 

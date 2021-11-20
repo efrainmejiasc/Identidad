@@ -1,0 +1,37 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/scriptsSite/meta/jsIndex.js"></script>
+    <link rel="stylesheet" href="~/js/toastr/toastr.css" />
+    <script src="~/js/toastr/toastr.min.js"></script>
+}
+
+
+<script>
+    var urlAddUsuario = '@Url.Action("AddUsuario","Usuario")';
+    var urlAllUsers = '@Url.Action("About","Usuario")';
+</script>
+
+<div class="card" style="margin-top:5%;">
+    <div class="card-body">
+         <div class="form-horizontal" style="color:dimgray">
+
+              <div class="form-group row">
+                  <div class="col-md-4 text-md-center">
+                    <select id="grado" class="form-control" onchange=""> </select>
+                </div>
+                  <div class="col-md-4 text-md-center">
+                    <select id="grupo" class="form-control" onchange=""></select>
+                </div>
+                  <div class="col-md-4 text-md-center">
+                    <select id="turno" class="form-control" onchange=""></select>
+                </div>
+                <div class="col-md-4 text-md-center">
+                    <input type="button" id="buscar" value="Buscar" class="btn btn-primary" style="" onclick="" />
+                </div>
+              </div>
+         </div>
+    </div>
+</div>

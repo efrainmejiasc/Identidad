@@ -102,5 +102,14 @@ namespace IdentidadSite.Controllers
             return Json(usuariosDTO);
         }
 
+        [HttpGet]
+        public IActionResult GetUsuarioLogger()
+        {
+            if(this.usuario != null)
+               return Json(this.usuario);
+            else
+                return Json("");
+        }
+
     }
 }

@@ -4,7 +4,30 @@
 }
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
+var urlGetUsuarioLogger = '@Url.Action("GetUsuarioLogger","Usuario")';
+
+$(document).ready(function () 
+{
     $('#dashboard_').hide();
+    $('#empresas_').hide();
+    GetUsuarioLogger();
+});
+
+
+function GetUsuarioLogger()
+{
+    $.ajax({
+        type: "GET",
+        url: urlUsuarioLogger ,
+        datatype: "json",
+        success: function (data)
+        {
+          var s = data.idRol== 5 ? $('#empresas_').show() : $('#empresas_').hide();
+        }
+    });
+ return false;
+}
+  
 </script>
 
 

@@ -93,10 +93,13 @@ namespace NegocioEMC.Commons
                 {
                     try 
                     {
+                       // if(dt.Columns.Contains("DNI"))
+                        p.Dni = !string.IsNullOrEmpty(r["DNI"].ToString()) ? r["DNI"].ToString() : string.Empty;
+                        p.Foto = fileSrc + @"imagenes/" + p.Dni + "jpg";
                         p.Foto =!string.IsNullOrEmpty(r["FOTO"].ToString()) ? r["FOTO"].ToString() : string.Empty;
                         p.Nombre = !string.IsNullOrEmpty(r["NOMBRE"].ToString()) ? r["NOMBRE"].ToString() : string.Empty;
                         p.Apellido = !string.IsNullOrEmpty(r["APELLIDO"].ToString()) ? r["APELLIDO"].ToString() : string.Empty;
-                        p.Dni = !string.IsNullOrEmpty(r["DNI"].ToString()) ? r["DNI"].ToString() : string.Empty;
+                        //p.Dni = !string.IsNullOrEmpty(r["DNI"].ToString()) ? r["DNI"].ToString() : string.Empty;
                         p.Matricula = !string.IsNullOrEmpty(r["MATRICULA"].ToString()) ? r["MATRICULA"].ToString() : string.Empty;
                         p.Rh = !string.IsNullOrEmpty(r["RH"].ToString()) ? r["RH"].ToString() : string.Empty;
                         p.Grado = !string.IsNullOrEmpty(r["GRADO"].ToString()) ? r["GRADO"].ToString() : string.Empty;

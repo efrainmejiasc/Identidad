@@ -97,7 +97,7 @@ namespace IdentidadSite.Controllers
             var nombreCarpeta = email + "_"  + id.ToString();
             var ruta = pathBase + "/" + nombreCarpeta;
             EngineTool.CreateDirectory(ruta);
-            lst.Add(ruta + "/");                                           //"wwwroot/ArchivosClientes/correo@absd.com/"
+            lst.Add(ruta + "/");                                           //"wwwroot/ArchivosClientes/correo@absd.com_idUsuario/"
 
             ruta = pathBase + "/" + nombreCarpeta + "/" + "imagenesQR";
             EngineTool.CreateDirectory(ruta);

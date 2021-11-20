@@ -1,6 +1,7 @@
 using AutoMapper;
 using DatosEMC.Clases;
 using EMCApi.Client;
+using IdentidadSite.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -53,6 +54,8 @@ namespace IdentidadSite
             });
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
+
+          
 
         }
 
