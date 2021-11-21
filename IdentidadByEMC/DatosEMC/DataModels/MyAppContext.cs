@@ -22,6 +22,7 @@ namespace DatosEMC.DataModels
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Archivo> Archivo { get; set; }
         public virtual DbSet<Persona> Persona { get; set; }
+        public virtual DbSet<AsistenciaMeta> AsistenciaMeta { get; set; }
 
 
 

@@ -56,8 +56,8 @@ namespace NegocioEMC.Services
 
         public GenericResponse  AddPersona(List<PersonaDTO> model)
         {
-            var personasDTO = new List<Persona>();
-            var personas = this.mapper.Map<List<Persona>>(model);
+            var personas = new List<Persona>();
+            personas = this.mapper.Map<List<Persona>>(model);
 
             personas = personRepository.AddPersona(personas);
 

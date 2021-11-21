@@ -105,6 +105,9 @@ namespace IdentidadAPI
 
             services.AddScoped<IGrupoService, GrupoService>();
             services.AddScoped<IGrupoRepository, GrupoRepository>();
+
+            services.AddScoped<IAsistenciaMetaService, AsistenciaMetaService>();
+            services.AddScoped<IAsistenciaMetaRepository, AsistenciaMetaRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

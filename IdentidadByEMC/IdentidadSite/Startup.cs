@@ -60,10 +60,10 @@ namespace IdentidadSite
                 options.Filters.Add(new ValidateSession());
             });*/
 
-            services.AddMvc(options => {
-                options.Filters.Add(new ValidateSession());
+           // services.AddMvc(options => {
+               // options.Filters.Add(new ValidateSession());
                // options.Filters.Add(typeof(ValidateSession));
-            });
+            //});
 
         }
 

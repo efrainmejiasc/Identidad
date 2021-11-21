@@ -52,8 +52,8 @@ namespace IdentidadAPI.Controllers
         {
             var personas = new List<PersonaDTO>();
 
-            if (idTurno == null)
-                personas = this.personaService.GetPersonas(idEmpresa, grado, grupo, (int) idTurno);
+            if (idTurno != null)
+                personas = this.personaService.GetPersonas(idEmpresa, grado, grupo,(int)idTurno);
             else
                 personas = this.personaService.GetPersonas(idEmpresa, grado, grupo);
 

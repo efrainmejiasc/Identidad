@@ -16,6 +16,7 @@ namespace NegocioEMC
             CreateMap<UsuarioDTO, Usuario>().ReverseMap();
             CreateMap<EmpresaDTO, Empresa>().ReverseMap();
             CreateMap<PersonaDTO, Persona>().ReverseMap();
+            CreateMap<AsistenciaMetaDTO, AsistenciaMeta>().ReverseMap();
         }
     }
 }
