@@ -89,6 +89,13 @@ namespace IdentidadSite.Controllers
             return Json(respuesta);
         }
 
+        [HttpGet]
+
+        public IActionResult Logout()
+        {
+            this.httpContext.HttpContext.Session.SetString("UserLogin", null);
+            return View("Index");
+        }
 
     }
 }
