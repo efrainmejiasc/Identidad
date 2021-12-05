@@ -7,6 +7,7 @@
     $('#uploadFile_').hide();
     $('#empresas_').hide();
     $('#personas_').hide();
+    $('#resumen_').hide();
 });
 
 function Login() {

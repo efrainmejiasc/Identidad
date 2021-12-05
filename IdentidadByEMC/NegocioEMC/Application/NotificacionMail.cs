@@ -16,22 +16,67 @@ namespace NegocioEMC.Application
         public bool EnviarMailNotificacion(string asunto, List<string> emailsDestino, string cuerpo = "", string pathTemplate = "")
         {
             bool result = false;
-            var cuerpoHTML = string.IsNullOrEmpty(pathTemplate)? ConstruccionNotificacion(pathTemplate) : string.Empty;
+            var cuerpoHTML = !string.IsNullOrEmpty(pathTemplate)? ConstruccionNotificacion(pathTemplate) : string.Empty;
 
             try
             {
                 MailMessage mensaje = new MailMessage();
                 SmtpClient servidor = new SmtpClient();
-                mensaje.From = new MailAddress("www.tuidentidad.com <tuidentidad@gmail.com>");
+                mensaje.From = new MailAddress("www.tuidentidad.com <emcfacturacionvzla@gmail.com>");
                 mensaje.Subject = asunto;
                 mensaje.SubjectEncoding = System.Text.Encoding.UTF8;
                 mensaje.Body = string.IsNullOrEmpty(cuerpoHTML)?cuerpo:cuerpoHTML;
                 mensaje.BodyEncoding = System.Text.Encoding.UTF8;
                 mensaje.IsBodyHtml = true;
-                foreach ( var email in emailsDestino)
+
+                foreach (var email in emailsDestino)
                     mensaje.To.Add(new MailAddress(email));
+
+                var copiaCarbono = CopiaCarbono();
+                foreach (var _email in copiaCarbono)
+                    mensaje.CC.Add(new MailAddress(_email));
+
                 //if (pathAdjunto != string.Empty) { mensaje.Attachments.Add(new Attachment(pathAdjunto)); }
-                servidor.Credentials = new System.Net.NetworkCredential("tuidentidad@gmail.com", "12345678");
+                servidor.Credentials = new System.Net.NetworkCredential("emcfacturacionvzla@gmail.com", "1234fabrizio");
+                servidor.Port = 587;
+                servidor.Host = "smtp.gmail.com";
+                servidor.EnableSsl = true;
+                servidor.Send(mensaje);
+                mensaje.Dispose();
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                string e = ex.ToString();
+            }
+
+            return result;
+        }
+
+        public bool EnviarMailNotificacion(string asunto, string emailDestino, string cuerpo = "", string pathTemplate = "")
+        {
+            bool result = false;
+            var cuerpoHTML = !string.IsNullOrEmpty(pathTemplate) ? ConstruccionNotificacion(pathTemplate) : string.Empty;
+
+            try
+            {
+                MailMessage mensaje = new MailMessage();
+                SmtpClient servidor = new SmtpClient();
+                mensaje.From = new MailAddress("www.tuidentidad.com <emcfacturacionvzla@gmail.com>");
+                mensaje.Subject = asunto;
+                mensaje.SubjectEncoding = System.Text.Encoding.UTF8;
+                mensaje.Body = string.IsNullOrEmpty(cuerpoHTML) ? cuerpo : cuerpoHTML;
+                mensaje.BodyEncoding = System.Text.Encoding.UTF8;
+                mensaje.IsBodyHtml = true;
+
+               mensaje.To.Add(new MailAddress(emailDestino));
+
+                var copiaCarbono = CopiaCarbono();
+                foreach (var _email in copiaCarbono)
+                    mensaje.CC.Add(new MailAddress(_email));
+
+                //if (pathAdjunto != string.Empty) { mensaje.Attachments.Add(new Attachment(pathAdjunto)); }
+                servidor.Credentials = new System.Net.NetworkCredential("emcfacturacionvzla@gmail.com", "1234fabrizio");
                 servidor.Port = 587;
                 servidor.Host = "smtp.gmail.com";
                 servidor.EnableSsl = true;
@@ -61,6 +106,14 @@ namespace NegocioEMC.Application
             body = body.Replace("@Model.Link", "");
             body = body.Replace("@Model.CodigoResetPassword","");
             return body;
+        }
+
+        private List<string> CopiaCarbono()
+        {
+            var lista = new List<string>();
+          //  lista.Add("creativarionegro@gmail.com");
+            lista.Add("efrainmejias@hotmail.com");
+            return lista;
         }
 
     }

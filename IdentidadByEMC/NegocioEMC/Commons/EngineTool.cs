@@ -105,7 +105,7 @@ namespace NegocioEMC.Commons
                         p.Grado = !string.IsNullOrEmpty(r["GRADO"].ToString()) ? r["GRADO"].ToString() : string.Empty;
                         p.Grupo = !string.IsNullOrEmpty(r["GRUPO"].ToString()) ? r["GRUPO"].ToString() : string.Empty;
                         p.Email = !string.IsNullOrEmpty(r["EMAIL"].ToString()) ? r["EMAIL"].ToString() : string.Empty;
-                        p.Email = EmailEsValido(p.Email) ? p.Email : "tuidentidad@gmail.com";
+                        p.Email = EmailEsValido(p.Email) ? p.Email : "creativarionegro@gmail.com";
                         p.Empresa = !string.IsNullOrEmpty(r["EMPRESA"].ToString()) ? r["EMPRESA"].ToString() : string.Empty;
                         p.Turno = !string.IsNullOrEmpty(r["TURNO"].ToString()) ? r["TURNO"].ToString() :string.Empty;
                         p.IdTurno = IdTurno(p.Turno);

@@ -16,12 +16,16 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NegocioEMC;
+using NegocioEMC.Application;
+using NegocioEMC.Application.Interfaces;
 using NegocioEMC.IServices;
 using NegocioEMC.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -74,11 +78,47 @@ namespace IdentidadAPI
                 };
             });
 
+
             //AGREGAR SWAGGER
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Identidad Api", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "IDENTIDAD BY EMC API", Version = "v1" });
+                options.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["controller"]}_{e.ActionDescriptor.RouteValues["action"]}");
+
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme (Example: 'Bearer 12345abcdef')",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer "
+                });
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
+
             });
+
+
 
             // AGREGAR MAPEO ENTRE CLASES
             var mapperConfig = new MapperConfiguration(mc =>
@@ -90,6 +130,8 @@ namespace IdentidadAPI
             services.AddSingleton(mapper);
 
             services.AddScoped<MyAppContext, MyAppContext>();
+
+            services.AddScoped<INotificacionMail, NotificacionMail>();
 
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -111,7 +153,9 @@ namespace IdentidadAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+#pragma warning disable CS1591 // Falta el comentario XML para el tipo o miembro visible públicamente
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+#pragma warning restore CS1591 // Falta el comentario XML para el tipo o miembro visible públicamente
         {
             if (env.IsDevelopment())
             {

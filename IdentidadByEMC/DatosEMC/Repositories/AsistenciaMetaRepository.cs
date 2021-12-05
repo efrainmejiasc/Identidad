@@ -34,19 +34,19 @@ namespace DatosEMC.Repositories
 
         public List<AsistenciaMeta> GetAsistenciaMeta(string matricula)
         {
-            var asistencias = this.db.AsistenciaMeta.Where(x => x.Dni == matricula).ToList();
+            var asistencias = this.db.AsistenciaMeta.Where(x => x.Dni == matricula && x.Asistencia == false).ToList();
             return asistencias;
         }
 
         public List<AsistenciaMeta> GetAsistenciaMeta(int idEmpresa, string grado, string grupo)
         {
-            var asistencias = this.db.AsistenciaMeta.Where(x => x.IdCompany == idEmpresa && x.Grado == grado && x.Grupo == grupo).ToList();
+            var asistencias = this.db.AsistenciaMeta.Where(x => x.IdCompany == idEmpresa && x.Grado == grado && x.Grupo == grupo && x.Asistencia == false).ToList();
             return asistencias;
         }
 
         public List<AsistenciaMeta> GetAsistenciaMeta(int idEmpresa, string grado, string grupo, int idTurno = 1)
         {
-            var asistencias = this.db.AsistenciaMeta.Where(x => x.IdCompany == idEmpresa && x.Grado == grado && x.Grupo == grupo && x.Turno == idTurno).ToList();
+            var asistencias = this.db.AsistenciaMeta.Where(x => x.IdCompany == idEmpresa && x.Grado == grado && x.Grupo == grupo && x.Turno == idTurno && x.Asistencia == false).ToList();
             return asistencias;
         }
     }

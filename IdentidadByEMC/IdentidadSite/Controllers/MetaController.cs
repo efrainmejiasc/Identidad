@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace IdentidadSite.Controllers
 {
@@ -25,6 +26,11 @@ namespace IdentidadSite.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult About()
         {
             return View();
         }
@@ -49,6 +55,7 @@ namespace IdentidadSite.Controllers
                 var saveFactura = await this.clientApi.PostAsistenciasMetaAsync(asistenciaMetaDTO);
               
                 response.Estatus = saveFactura.Ok? true : false;
+
             }
             catch (Exception ex)
             {
@@ -56,6 +63,24 @@ namespace IdentidadSite.Controllers
             }
 
             return Json(response);
+        }
+
+        [HttpGet] 
+        public async Task<ActionResult> GetResumenAsistenciaDNI(string dni)
+        {
+            ICollection<AsistenciaMetaDTO> inasistencias = new List<AsistenciaMetaDTO>();
+
+            try
+            {
+                inasistencias = await  this.clientApi.GetAsistenciasMetaDIAsync(dni);
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+            }
+
+        
+            return Json(inasistencias);
         }
 
     }

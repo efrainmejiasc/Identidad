@@ -1,0 +1,91 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/scriptsSite/meta/jsAbout.js"></script>
+    <link rel="stylesheet" href="~/js/toastr/toastr.css" />
+    <script src="~/js/toastr/toastr.min.js"></script>
+    <link rel="stylesheet" href="~/css/modalStyle.css" />
+     <script src="~/js/dataTables/datatables.js"></script>
+    <link rel="stylesheet" href="~/js/dataTables/datatables.css" />
+}
+
+<script>
+    var urlBuscarPersonas = '@Url.Action("GetPersonas","Persona")';
+    var urlGetGrados = '@Url.Action("GetGrados","Grados")';
+    var urlGetGrupos= '@Url.Action("GetGrupos","Grupos")';
+    var urlGetResumenAsistenciaDNI= '@Url.Action("GetResumenAsistenciaDNI","Meta")';
+</script>
+
+<div class="card" style="margin-top:5%;">
+    <div class="card-body">
+         <div class="form-horizontal" style="color: #0268b8;">
+
+            <div class="form-group row">
+                <div class="col-md-3 text-md-left">
+                        <span>Grado</span>
+                        <select id="grado" class="form-control" onchange=""> </select>
+                </div>
+                <div class="col-md-3 text-md-left">
+                        <span>Grupo</span>
+                        <select id="grupo" class="form-control" onchange=""></select>
+                 </div>  
+                 <div class="col-md-3 text-md-left">
+                        <span>Turno</span>
+                        <select id="turno" class="form-control" onchange=""></select>
+                 </div>
+                 <div class="col-md-3 text-md-center">
+                     <br />
+                    <input type="button" id="buscar" value="Buscar" class="btn btn-primary" style="" onclick="BuscarPersonas();" />
+                 </div>
+            </div>
+
+          <div class="form-horizontal">
+               <input type="hidden" id="initDataTable" value="no" />
+               <table id="tablaUsuarios" class="display compact dt-center table table-striped table-light" style="width:100%">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Matricula</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+           <div class="form-group row">
+                 <div class="modalTipo" id="resumen">
+                    <div class="modal-content2">
+                          <div class="form-horizontal">
+                            <div class="table-responsive">
+                            <table id="tableResumen" class="display compact dt-center table table-striped table-light" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr >
+                                        <th>Nª</th>
+                                        <th>Fecha</th>
+                                        <th>Materia</th>
+                                        <th>Observacion</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div>
+                                <input type="button" class="btn btn-danger" value="Cancelar" onclick="OcultarResumen()" /> 
+                            </div>
+                          </div>
+                    </div> 
+                 </div>
+            </div>
+
+
+         </div>
+     </div>
+</div>

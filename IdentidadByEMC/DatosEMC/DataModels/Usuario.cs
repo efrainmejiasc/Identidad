@@ -44,5 +44,8 @@ namespace DatosEMC.DataModels
         [Column(Order = 11, TypeName = "INT")]
         public int IdRol { get; set; }
 
+        [Column(Order = 12, TypeName = "VARCHAR(50)")]
+        public string Dni { get; set; }
+
     }
 }

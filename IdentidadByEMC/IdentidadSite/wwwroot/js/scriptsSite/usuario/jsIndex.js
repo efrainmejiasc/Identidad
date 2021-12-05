@@ -23,6 +23,7 @@ function CrearUsuario()
 {
     var nombre = $('#nombre').val();
     var apellido = $('#apellido').val();
+    var dni = $('#dni').val();
     var idRol = $('#rol').val();
     var username = $('#username').val();
     var email = $('#email').val();
@@ -31,7 +32,7 @@ function CrearUsuario()
 
     console.log(password + ' ' + cpassword);
 
-    if ( nombre === '' || apellido === '' || idRol === '' || username === '' || email === '' || password === '' || cpassword === '') {
+    if ( nombre === '' || apellido === '' || dni === '' || idRol === '' || username === '' || email === '' || password === '' || cpassword === '') {
         toastr.warning("Todos los campos son requeridos.");
         return false;
     }
@@ -47,7 +48,7 @@ function CrearUsuario()
     $.ajax({
         type: "POST",
         url: urlAddUsuario,
-        data: {Nombre: nombre, Apellido: apellido, IdRol: idRol, UserName: username, Email: email, Password: password },
+        data: {Nombre: nombre, Apellido: apellido, IdRol: idRol, UserName: username, Email: email, Password: password, Dni: dni },
         datatype: "json",
         success: function (data) {
             if (data.estatus)

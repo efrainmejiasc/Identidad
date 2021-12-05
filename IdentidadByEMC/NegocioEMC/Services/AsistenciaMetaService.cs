@@ -2,6 +2,7 @@
 using DatosEMC.DataModels;
 using DatosEMC.DTOs;
 using DatosEMC.IRepositories;
+using NegocioEMC.Application.Interfaces;
 using NegocioEMC.Commons;
 using NegocioEMC.IServices;
 using System;
@@ -17,11 +18,13 @@ namespace NegocioEMC.Services
 
         private readonly IMapper mapper;
         private readonly IAsistenciaMetaRepository asistenciaMetaRepository;
+        private readonly INotificacionMail notificacionEmail;
 
-        public AsistenciaMetaService (IMapper _mapper, IAsistenciaMetaRepository _asistenciaMetaRepository)
+        public AsistenciaMetaService (IMapper _mapper, IAsistenciaMetaRepository _asistenciaMetaRepository, INotificacionMail _notificacionEmail)
         {
             this.mapper = _mapper;
             this.asistenciaMetaRepository = _asistenciaMetaRepository;
+            this.notificacionEmail = _notificacionEmail;
         }
 
         public GenericResponse AddAsistenciaMeta(List<AsistenciaMetaDTO> model)
@@ -31,8 +34,12 @@ namespace NegocioEMC.Services
             asistencias = this.asistenciaMetaRepository.AddAsistenciaMeta(asistencias);
 
             if (asistencias.Count > 0)
-                return EngineService.SetGenericResponse(true, "La información ha sido registrada");
+            {
+                foreach(var i in model)
+                this.notificacionEmail.EnviarMailNotificacion("Asistencia clase", i.EmailSend ,"Saludos. <br> Su representado: "  + i.Dni + " tiene una inasistencia en el dia de hoy.<br> Materia: " + i.Materia + "<br>" + i.Observacion);
 
+               return EngineService.SetGenericResponse(true, "La información ha sido registrada");
+            }
             else
                 return EngineService.SetGenericResponse(false, "No se pudo registrar la información");
 
@@ -44,9 +51,12 @@ namespace NegocioEMC.Services
 
             asistencia = this.asistenciaMetaRepository.AddAsistenciaMeta(asistencia);
 
-            if (asistencia != null)
-                return EngineService.SetGenericResponse(true, "La información ha sido registrada");
+            if (asistencia!= null)
+            {
+                this.notificacionEmail.EnviarMailNotificacion("Asistencia clase", model.EmailSend, "Saludos. <br> Su representado: " + model.Dni + " tiene una inasistencia en el dia de hoy. <br> Materia: " + model.Materia + "<br>" + model.Observacion);
 
+                return EngineService.SetGenericResponse(true, "La información ha sido registrada");
+            }
             else
                 return EngineService.SetGenericResponse(false, "No se pudo registrar la información");
 

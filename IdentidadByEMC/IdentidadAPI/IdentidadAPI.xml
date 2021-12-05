@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IdentidadAPI</name>
+    </assembly>
+    <members>
+        <member name="M:IdentidadApi.Controllers.EmpresaController.AddEmpresa(DatosEMC.DTOs.EmpresaDTO)">
+            <summary>
+            Crea una empresa 
+            </summary>
+            <returns>Datos de la Empresa</returns>
+        </member>
+        <member name="M:IdentidadApi.Controllers.EmpresaController.GetEmpresas(System.Boolean)">
+             <summary>
+            Obtiene datos de la Empresa
+             </summary>
+             <returns>Datos del Empresa</returns>
+        </member>
+        <member name="M:IdentidadApi.Controllers.EmpresaController.DeleteEmpresa(System.Int32)">
+             <summary>
+            Elimina una empresa
+             </summary>
+             <returns> Respuesta generica</returns>
+        </member>
+        <member name="M:IdentidadApi.Controllers.EmpresaController.UpdateEstatusEmpresa(System.Int32,System.Boolean)">
+            <summary>
+            actualiza estatus de empresa
+            </summary>
+            <returns>Estado de la solicitud</returns>
+        </member>
+        <member name="M:IdentidadApi.Controllers.UsuarioController.GetUserData(System.Int32,System.String,System.String)">
+             <summary>
+            Obtiene datos del usuario
+             <param name="idEmpresa">Id Empresa</param>
+             <param name="userMail">Inombre usuario</param>
+             <param name="password">Inombre usuario</param>
+             </summary>
+             <returns>Datos del usuario</returns>
+        </member>
+        <member name="M:IdentidadApi.Controllers.UsuarioController.GetUsuarios(System.Int32)">
+             <summary>
+            Obtiene usuarios por id empresa 
+             <param name="id">Id Empresa</param>
+             </summary>
+             <returns>Usuarios de la empresa </returns>
+        </member>
+        <member name="M:IdentidadApi.Controllers.UsuarioController.PostUsuario(DatosEMC.DTOs.UsuarioDTO)">
+            <summary>
+            Crea un nuevo Usuario
+            </summary>
+            <returns>Estado de la solicitud</returns>
+        </member>
+        <member name="M:IdentidadApi.Controllers.UsuarioController.UpdateEstatusUsuario(DatosEMC.DTOs.UsuarioDTO)">
+            <summary>
+            actualiza estatus de usuario
+            </summary>
+            <returns>Estado de la solicitud</returns>
+        </member>
+        <member name="M:IdentidadApi.Controllers.UsuarioController.EliminarUsuario(DatosEMC.DTOs.UsuarioDTO)">
+            <summary>
+            Eliminar usuario
+            </summary>
+            <returns>Estado de la solicitud</returns>
+        </member>
+        <member name="T:IdentidadApi.IdentityExtensions">
+            <summary>
+            Clase de extensiones para la identidad
+            </summary>
+        </member>
+        <member name="M:IdentidadApi.IdentityExtensions.GetId(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene el identificador de usuario
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>Identificador de usuario</returns>
+        </member>
+        <member name="M:IdentidadApi.IdentityExtensions.GetUsuario(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene el nombre de usuario        
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>Nombre de usuario</returns>
+        </member>
+        <member name="M:IdentidadApi.IdentityExtensions.GetNombre(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene el nombre de la persona
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>Nombre de la persona</returns>
+        </member>
+        <member name="M:IdentidadApi.IdentityExtensions.GetApellidos(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene los apellidos de la persona 
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>Apellidos del usuario</returns>
+        </member>
+        <member name="M:IdentidadApi.IdentityExtensions.GetEmail(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene el correo electronico
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>correo electronico del usuario</returns>
+        </member>
+        <member name="M:IdentidadApi.IdentityExtensions.GetRoles(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene la lista de roles que tiene el usuario
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>role</returns>
+        </member>
+        <member name="T:IdentidadApi.SecurityToken.JwtBearerTokenSettings">
+            <summary>
+            Configuracion para el JWT
+            </summary>
+        </member>
+        <member name="P:IdentidadApi.SecurityToken.JwtBearerTokenSettings.SecretKey">
+            <summary>
+            Llave de encriptacion
+            </summary>
+        </member>
+        <member name="P:IdentidadApi.SecurityToken.JwtBearerTokenSettings.Audience">
+            <summary>
+            Solicitantes
+            </summary>
+        </member>
+        <member name="P:IdentidadApi.SecurityToken.JwtBearerTokenSettings.Issuer">
+            <summary>
+            Gerador de token
+            </summary>
+        </member>
+        <member name="P:IdentidadApi.SecurityToken.JwtBearerTokenSettings.ExpiryTimeInDays">
+            <summary>
+            Tiempo de expiracion en dias
+            </summary>
+        </member>
+        <member name="P:IdentidadApi.SecurityToken.JwtBearerTokenSettings.ExpiryTimeInMinutes">
+            <summary>
+            Tiempo de expiracion en minutos
+            </summary>
+        </member>
+        <member name="T:IdentidadApi.SecurityToken.TokenProvider">
+            <summary>
+            Clase del provedor de token
+            </summary>
+        </member>
+        <member name="M:IdentidadApi.SecurityToken.TokenProvider.#ctor(IdentidadApi.SecurityToken.JwtBearerTokenSettings)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="jwtTokenOptions">Opciones de configuracion</param>
+        </member>
+        <member name="M:IdentidadApi.SecurityToken.TokenProvider.GenerarToken(DatosEMC.DTOs.UsuarioDTO,System.Boolean)">
+            <summary>
+            General el token de autenticacion
+            </summary>
+            <param name="usuarioDTO"></param>
+            <param name="externo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentidadAPI.Controllers.PersonaController.PostPersonas(System.Collections.Generic.List{DatosEMC.DTOs.PersonaDTO})">
+            <summary>
+            Crear registro de personas
+            </summary>
+            <returns>Estado de la solicitud</returns>
+        </member>
+        <member name="M:IdentidadAPI.Controllers.PersonaController.GetPersonas(System.Int32,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Obtiene personas segun parametros 
+            </summary>
+            <returns>Lista de facturas de venta</returns>
+        </member>
+        <member name="M:IdentidadAPI.Controllers.PersonaController.GetPersona(System.String)">
+            <summary>
+            Obtiene personas segun parametros 
+            </summary>
+            <returns>Lista de facturas de venta</returns>
+        </member>
+    </members>
+</doc>
