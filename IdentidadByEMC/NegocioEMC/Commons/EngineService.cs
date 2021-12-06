@@ -9,6 +9,7 @@ namespace NegocioEMC.Commons
 {
     public class EngineService
     {
+
         public static  GenericResponse SetGenericResponse(bool ok, string mensaje)
         {
             var response = new GenericResponse()

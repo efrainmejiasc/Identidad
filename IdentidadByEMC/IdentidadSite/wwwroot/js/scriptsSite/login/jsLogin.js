@@ -1,13 +1,6 @@
 ﻿$(document).ready(function () {
     console.log("ready!");
     GetEmpresas();
-    $('#logout_').hide();
-    $('#usuario_').hide();
-    $('#dashboard_').hide();
-    $('#uploadFile_').hide();
-    $('#empresas_').hide();
-    $('#personas_').hide();
-    $('#resumen_').hide();
 });
 
 function Login() {

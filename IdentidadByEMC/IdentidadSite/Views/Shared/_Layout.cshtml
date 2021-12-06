@@ -16,33 +16,10 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+               
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" id="submenu" style="color: #0268b8;">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a href="@Url.Action("Index","Home")" class="nav-link text-info" id="logout_">Salir</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="@Url.Action("Index","Usuario")" class="nav-link text-info" id="usuario_">Usuarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="@Url.Action("About","Home")" class="nav-link text-info" id="dashboard_">Tablero</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="@Url.Action("Index","UploadFile")" class="nav-link text-info" id="uploadFile_">Archivos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="@Url.Action("Index","Empresa")" class="nav-link text-info" id="empresas_">Empresas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="@Url.Action("Index","Meta")" class="nav-link text-info" id="personas_">Asistencia</a>
-                        </li>
-                             <li class="nav-item">
-                            <a href="@Url.Action("About","Meta")" class="nav-link text-info" id="resumen_">Resumen</a>
-                        </li>
+                  
                     </ul>
                 </div>
             </div>
@@ -55,10 +32,9 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            <a>  &copy;  @DateTime.Now.Year Desarrollado por EMC</a>
+        <div class="container" style="color:green;">
+              <a style="color:green;">  &copy;  @DateTime.Now.Year Desarrollado por EMC</a>
              <a> &nbsp;&nbsp;&nbsp;</a>
-            <a href='@Url.Action("Index", "Empresa")' style="display:none;" >  Empresa </a>
         </div>
     </footer>
 

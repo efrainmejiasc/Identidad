@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     console.log("ready!");
     LimpiarForm();
-    $('#usuario_').hide();
     GetRolesUsuario();
 });
 

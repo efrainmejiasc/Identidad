@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     console.log("ready!");
-    $('#personas_').hide();
     GetTurno();
     GetGrados();
     GetGrupos();

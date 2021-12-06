@@ -1,0 +1,80 @@
+﻿@using NegocioEMC;
+@using Newtonsoft.Json
+@using Microsoft.AspNetCore.Http;
+@{
+    var httpContext = new HttpContextAccessor();
+    var usuario = new EMCApi.Client.UsuarioDTO();
+    if (!string.IsNullOrEmpty(httpContext.HttpContext.Session.GetString("UserLogin")))
+    {
+       usuario = JsonConvert.DeserializeObject<EMCApi.Client.UsuarioDTO>(httpContext.HttpContext.Session.GetString("UserLogin"));
+    }
+
+    
+}
+
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav nav-height">
+
+               <li class="nav-item nav-profile border-bottom">
+                    <a href="#" class="nav-link flex-column">
+                        <div class="nav-profile-text d-flex ms-0 mb-3 flex-column">
+                            <span class="font-weight-semibold mb-1 mt-2 text-center" style="font-size:14px;">@usuario.Username</span>
+                            <span class="text-secondary icon-sm text-center" style="font-size:14px;">@usuario.Email</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="pt-2 pb-1 text-center">
+                    <span class="nav-item-head">Principal</span>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("About","Home")">
+                        <i class="mdi mdi-file-check menu-icon"></i>
+                        <span class="menu-title"> Tablero </span>
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","UploadFile")" >
+                        <i class="mdi mdi-file menu-icon"></i>
+                        <span class="menu-title"> Archivos </span>
+                    </a>
+                </li>
+
+ 
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Usuario")">
+                            <i class="fa fa-group menu-icon"></i>
+                            <span class="menu-title"> Usuarios </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Empresa")" >
+                            <i class="fa fa-user-circle menu-icon"></i>
+                            <span class="menu-title">Empresas</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Meta")" >
+                            <i class="fa fa-user-circle menu-icon"></i>
+                            <span class="menu-title">Asistencia</span>
+                        </a>
+                    </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">
+                        <i class="mdi mdi-exponent-box"></i>
+                        <span class="menu-title">Salir</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+
+
+
+
