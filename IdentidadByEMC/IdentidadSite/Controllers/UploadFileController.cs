@@ -84,6 +84,7 @@ namespace IdentidadSite.Controllers
             {
                 Console.WriteLine(ex.Message);
                 ViewBag.Descripcion = "Error cargando archivos";
+                EngineTool.TrackLog(@"wwwroot/ArchivosClientes/tracklog.txt","UploadFile " + ex.ToString() + " " + DateTime.Now.ToString());
             }
 
             return View();

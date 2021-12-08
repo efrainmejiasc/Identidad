@@ -15,6 +15,8 @@ namespace DatosEMC.DataModels
         {
         }
 
+
+        public virtual DbSet<TrackLog> TrackLog { get; set; }
         public virtual DbSet<Materias> Materias { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
 
@@ -23,7 +25,6 @@ namespace DatosEMC.DataModels
         public virtual DbSet<Archivo> Archivo { get; set; }
         public virtual DbSet<Persona> Persona { get; set; }
         public virtual DbSet<AsistenciaMeta> AsistenciaMeta { get; set; }
-
 
 
 

@@ -11,15 +11,25 @@ namespace DatosEMC.Repositories
     public  class PersonaRepository : IPersonaRepository
     {
         private readonly MyAppContext db;
+        private readonly ITrackLogRepository tracking;
         public PersonaRepository(MyAppContext _db)
         {
             this.db = _db;
+            this.tracking = new TrackLogRepository(this.db);
         }
 
         public List<Persona> AddPersona(List<Persona> model)
         {
-            this.db.Persona.AddRange(model);
-            this.db.SaveChanges();
+            try
+            {
+                this.db.Persona.AddRange(model);
+                this.db.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                this.tracking.AddTrackLog("AddPersona", ex.ToString(), ex.Message);
+            }
+          
 
             return model;
         }

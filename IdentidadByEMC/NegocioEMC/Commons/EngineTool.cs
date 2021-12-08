@@ -96,7 +96,7 @@ namespace NegocioEMC.Commons
                        // if(dt.Columns.Contains("DNI"))
                         p.Dni = !string.IsNullOrEmpty(r["DNI"].ToString()) ? r["DNI"].ToString() : string.Empty;
                         p.Foto = fileSrc + @"imagenes/" + p.Dni + "jpg";
-                        p.Foto =!string.IsNullOrEmpty(r["FOTO"].ToString()) ? r["FOTO"].ToString() : string.Empty;
+                        //p.Foto =!string.IsNullOrEmpty(r["FOTO"].ToString()) ? r["FOTO"].ToString() : string.Empty;
                         p.Nombre = !string.IsNullOrEmpty(r["NOMBRE"].ToString()) ? r["NOMBRE"].ToString() : string.Empty;
                         p.Apellido = !string.IsNullOrEmpty(r["APELLIDO"].ToString()) ? r["APELLIDO"].ToString() : string.Empty;
                         //p.Dni = !string.IsNullOrEmpty(r["DNI"].ToString()) ? r["DNI"].ToString() : string.Empty;
@@ -106,7 +106,7 @@ namespace NegocioEMC.Commons
                         p.Grupo = !string.IsNullOrEmpty(r["GRUPO"].ToString()) ? r["GRUPO"].ToString() : string.Empty;
                         p.Email = !string.IsNullOrEmpty(r["EMAIL"].ToString()) ? r["EMAIL"].ToString() : string.Empty;
                         p.Email = EmailEsValido(p.Email) ? p.Email : "creativarionegro@gmail.com";
-                        p.Empresa = !string.IsNullOrEmpty(r["EMPRESA"].ToString()) ? r["EMPRESA"].ToString() : string.Empty;
+                       // p.Empresa = !string.IsNullOrEmpty(r["EMPRESA"].ToString()) ? r["EMPRESA"].ToString() : string.Empty;
                         p.Turno = !string.IsNullOrEmpty(r["TURNO"].ToString()) ? r["TURNO"].ToString() :string.Empty;
                         p.IdTurno = IdTurno(p.Turno);
                         p.Identificador = CreateGuid().ToString();
@@ -144,6 +144,23 @@ namespace NegocioEMC.Commons
                 turno = "1";
 
             return Convert.ToInt32(turno);
+        }
+
+        public static bool TrackLog(string path, string strLog)
+        {
+            var resultado = false;
+
+
+            if (!File.Exists(path))
+            {
+                File.Create(path);
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(path, true))
+                {
+                    file.WriteLine(strLog);
+                    resultado = true;
+                }
+            }
+            return resultado;
         }
 
 
