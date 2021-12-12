@@ -1,4 +1,5 @@
 using AutoMapper;
+using DatosEMC.Clases;
 using DatosEMC.DataModels;
 using DatosEMC.IRepositories;
 using DatosEMC.Repositories;
@@ -150,12 +151,16 @@ namespace IdentidadAPI
 
             services.AddScoped<IAsistenciaMetaService, AsistenciaMetaService>();
             services.AddScoped<IAsistenciaMetaRepository, AsistenciaMetaRepository>();
+#if DEBUG
+            EngineData.ConnectionDb = Configuration.GetValue<string>("ConnectionStrings:DefaultConnectionLocal");
+#else
+            EngineData.ConnectionDb = Configuration.GetValue<string>("ConnectionStrings:DefaultConnection");
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-#pragma warning disable CS1591 // Falta el comentario XML para el tipo o miembro visible públicamente
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-#pragma warning restore CS1591 // Falta el comentario XML para el tipo o miembro visible públicamente
+
         {
             if (env.IsDevelopment())
             {

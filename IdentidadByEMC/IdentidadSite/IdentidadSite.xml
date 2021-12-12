@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IdentidadSite</name>
+    </assembly>
+    <members>
+        <member name="T:IdentidadSite.IdentityExtensions">
+            <summary>
+            Clase de extension para la identidad
+            </summary>
+        </member>
+        <member name="M:IdentidadSite.IdentityExtensions.GetId(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene el identificador de usuario
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>Identificador del usuario</returns>
+        </member>
+        <member name="M:IdentidadSite.IdentityExtensions.GetUsuario(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene el nombre de usuario        
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>Nombre de usuario</returns>
+        </member>
+        <member name="M:IdentidadSite.IdentityExtensions.GetNombre(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene el nombre de la persona
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>Nombre de la persona</returns>
+        </member>
+        <member name="M:IdentidadSite.IdentityExtensions.GetApellidos(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene los apellidos de la persona 
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>Apellidos del usuario</returns>
+        </member>
+        <member name="M:IdentidadSite.IdentityExtensions.GetEmail(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene el correo electronico
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>correo electronico del usuario</returns>
+        </member>
+        <member name="M:IdentidadSite.IdentityExtensions.GetRoles(System.Security.Principal.IIdentity)">
+            <summary>
+            Obtiene la lista de roles que tiene el usuario
+            </summary>
+            <param name="identity">Identidad</param>
+            <returns>role</returns>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.LoginAsync(EMCApi.Client.CredencialesDTO)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.LoginAsync(EMCApi.Client.CredencialesDTO,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.AddEmpresaAsync(EMCApi.Client.EmpresaDTO)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.AddEmpresaAsync(EMCApi.Client.EmpresaDTO,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetEmpresasAsync(System.Boolean)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetEmpresasAsync(System.Boolean,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.DeleteEmpresaAsync(System.Int32)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.DeleteEmpresaAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.UpdateEstatusEmpresaAsync(System.Int32,System.Boolean)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.UpdateEstatusEmpresaAsync(System.Int32,System.Boolean,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetGradosAsync(System.Int32)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetGradosAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetGruposAsync(System.Int32)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetGruposAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.PostAsistenciasMetaAsync(System.Collections.Generic.IEnumerable{EMCApi.Client.AsistenciaMetaDTO})">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.PostAsistenciasMetaAsync(System.Collections.Generic.IEnumerable{EMCApi.Client.AsistenciaMetaDTO},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.PostAsistenciaMetaAsync(EMCApi.Client.AsistenciaMetaDTO)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.PostAsistenciaMetaAsync(EMCApi.Client.AsistenciaMetaDTO,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetAsistenciasMetaAsync(System.Int32,System.String,System.String,System.Nullable{System.Int32})">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetAsistenciasMetaAsync(System.Int32,System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetAsistenciasMetaDIAsync(System.String)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetAsistenciasMetaDIAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.PostPersonasAsync(System.Collections.Generic.IEnumerable{EMCApi.Client.PersonaDTO})">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.PostPersonasAsync(System.Collections.Generic.IEnumerable{EMCApi.Client.PersonaDTO},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetPersonasAsync(System.Int32,System.String,System.String,System.Nullable{System.Int32})">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetPersonasAsync(System.Int32,System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetPersonaAsync(System.String)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetPersonaAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetUserDataAsync(System.Int32,System.String,System.String)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GetUserDataAsync(System.Int32,System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GeUsuariosAsync(System.Nullable{System.Int32})">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.GeUsuariosAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.PostUsuarioAsync(EMCApi.Client.UsuarioDTO)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.PostUsuarioAsync(EMCApi.Client.UsuarioDTO,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.UpdateEstatusUsuarioAsync(EMCApi.Client.UsuarioDTO)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.UpdateEstatusUsuarioAsync(EMCApi.Client.UsuarioDTO,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.EliminarUsuarioAsync(EMCApi.Client.UsuarioDTO)">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.EliminarUsuarioAsync(EMCApi.Client.UsuarioDTO,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.WeatherForecastAsync">
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:EMCApi.Client.ClientEMCApi.WeatherForecastAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:EMCApi.Client.ApiException">A server side error occurred.</exception>
+        </member>
+    </members>
+</doc>

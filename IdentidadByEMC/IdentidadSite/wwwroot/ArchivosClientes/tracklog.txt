@@ -1,0 +1,22 @@
+UploadFile HTTP Response: 
+
+
+
+EMCApi.Client.ApiException: The HTTP status code of the response was not expected (500).
+
+Status: 500
+Response: 
+
+   at EMCApi.Client.ClientEMCApi.PostPersonasAsync(IEnumerable`1 body, CancellationToken cancellationToken) in C:\Users\EfrainMejiasC\Documents\Repositorios\Identidad\IdentidadByEMC\IdentidadSite\obj\swaggerClient.cs:line 1122
+   at IdentidadSite.Controllers.UploadFileController.Index(List`1 files) in C:\Users\EfrainMejiasC\Documents\Repositorios\Identidad\IdentidadByEMC\IdentidadSite\Controllers\UploadFileController.cs:line 61 09/12/2021 09:58:16 
+UploadFile HTTP Response: 
+
+
+
+EMCApi.Client.ApiException: The HTTP status code of the response was not expected (500).
+
+Status: 500
+Response: 
+
+   at EMCApi.Client.ClientEMCApi.PostPersonasAsync(IEnumerable`1 body, CancellationToken cancellationToken) in C:\Users\EfrainMejiasC\Documents\Repositorios\Identidad\IdentidadByEMC\IdentidadSite\obj\swaggerClient.cs:line 1122
+   at IdentidadSite.Controllers.UploadFileController.Index(List`1 files) in C:\Users\EfrainMejiasC\Documents\Repositorios\Identidad\IdentidadByEMC\IdentidadSite\Controllers\UploadFileController.cs:line 61 09/12/2021 10:03:27 

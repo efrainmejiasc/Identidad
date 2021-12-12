@@ -123,6 +123,7 @@ namespace NegocioEMC.Commons
                     }
                     catch(Exception ex) 
                     {
+                        EngineTool.TrackLog(@"wwwroot/ArchivosClientes/tracklog.txt", "UploadFile " + ex.ToString() + " " + DateTime.Now.ToString());
                         Console.WriteLine(ex.Message);
                     }
                 }
@@ -152,14 +153,14 @@ namespace NegocioEMC.Commons
 
 
             if (!File.Exists(path))
-            {
                 File.Create(path);
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(path, true))
-                {
-                    file.WriteLine(strLog);
-                    resultado = true;
-                }
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path, true))
+            {
+                file.WriteLine(strLog);
+                resultado = true;
             }
+
             return resultado;
         }
 

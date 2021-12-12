@@ -3,6 +3,7 @@ using IdentidadSite.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NegocioEMC.Commons;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,7 @@ namespace IdentidadSite.Controllers
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                EngineTool.TrackLog(@"wwwroot/ArchivosClientes/tracklog.txt", "UploadFile " + ex.ToString() + " " + DateTime.Now.ToString());
             }
 
             return Json(empresas);
